@@ -1,0 +1,319 @@
+
+        /* ====================================
+           MOBILE-FRIENDLY CSS START 
+           ==================================== */
+
+        /* --- 1. Core Structure & Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Theme Colors */
+            --dark-blue: #2a2e41; /* Footer background */
+            --accent-blue: #0000ff; /* Highlights/Links */
+            --header-bg: rgba(0, 0, 255, 0.6);
+            --nav-bg: rgba(237, 159, 42, 0.2);
+            --text-light: #ffffff;
+            --page-bg: #f4f7f6; /* Light gray background */
+            --footer-line: #00008b; /* Blue line color */
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            background-color: var(--page-bg);
+            min-height: 100vh; /* Ensures footer stays at the bottom */
+        }
+        a[href^="mailto:"] {
+            color: yellow;
+        }
+
+        /* --- 2. Header and Navigation --- */
+        header {
+            position: static;
+            color: white;
+            background: var(--header-bg);
+            padding: 10px 5px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            font-size: 1em;
+        }
+
+        .navbar {
+            position: static;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+            background: var(--nav-bg);
+            z-index: 100;
+        }
+
+        .logo-img {
+            width: 200px;
+            border: 3px solid #ff9900;
+            height: auto;
+            margin-right: 40px;
+        }
+
+        .menu-toggle {
+            display: block;
+            font-size: 2em;
+            padding: 5px;
+            border: none;
+            background: none;
+            color: #333;
+            cursor: pointer;
+            z-index: 150;
+        }
+
+        .nav-menu {
+            position: absolute;
+            top: 60px; /* Adjust this if header/nav height changes */
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s ease-out;
+            z-index: 99;
+        }
+        .nav-menu.is-open {
+            height: calc(100vh - 60px); /* Fill the rest of the screen */
+        }
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.5em;
+            padding: 10px 0;
+            display: block;
+            position: relative;
+        }
+
+        nav a.active {
+            color: #ff0080;
+        }
+
+        /* ====================================
+           3. GALLERY STYLING 
+           ==================================== 
+        */
+
+        /* Wrapper for the entire gallery component */
+        .carousel-wrapper {
+            max-width: 900px; 
+            margin: 40px auto;
+            background-color: #222;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            flex-grow: 1; /* Allows gallery to take up vertical space */
+        }
+        .carousel-heading {
+            text-align: center;
+            padding: 20px 0 0;
+            color: var(--dark-blue);
+            background-color: var(--page-bg);
+        }
+
+        /* Main Viewport Container */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 60vh; 
+            overflow: hidden; 
+        }
+
+        /* Track: Holds all images and moves horizontally */
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Item: Each individual slide */
+        .carousel-item {
+            flex: 0 0 100%;
+            height: 100%;
+        }
+
+        /* Image styling */
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Keeps images centered and contained */
+            background-color: #000;
+        }
+
+        /* Navigation Arrows */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 15px 10px;
+            cursor: pointer;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+        .arrow-left { left: 0; border-radius: 0 5px 5px 0; }
+        .arrow-right { right: 0; border-radius: 5px 0 0 5px; }
+        .carousel-arrow svg {
+            fill: currentColor;
+            width: 30px;
+            height: 30px;
+            display: block;
+        }
+
+        /* CRITICAL: Arrow Disappearance at Boundaries */
+        .carousel-arrow:disabled {
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* Image Caption */
+        .carousel-caption {
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 1.1em;
+            background-color: #111;
+        }
+        
+        /* --- 4. Footer Styling --- */
+        .site-footer {
+            background-color: var(--dark-blue);
+            color: var(--text-light);
+            padding-top: 50px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            text-align: center;
+        }
+        .footer-logo-section, .quick-links, .get-in-touch {
+            width: 100%;
+        }
+        .footer-logo-section img { max-width: 150px; height: auto; }
+        .footer-logo-section p { font-size: 0.8em; margin-top: 10px; }
+        .quick-links ul { list-style: none; padding: 0; }
+        .quick-links a { color: var(--text-light); text-decoration: none; padding: 5px 0; display: block; }
+        .get-in-touch h2, .quick-links h2 {
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        .get-in-touch p { font-size: 0.9em; }
+        .footer-bottom-bar {
+            background-color: #252837;
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px 40px;
+            border-top: 5px solid var(--footer-line);
+        }
+        .scroll-to-top-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-blue);
+            color: var(--text-light);
+            font-size: 1.5em;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+        }
+        /* the arrow bullet point ,footer*/
+        .quick-links li {
+            padding-left: 30px; 
+            position: relative; 
+            margin-bottom: 5px; 
+        }
+         .quick-links ul {
+            list-style: none;
+            padding: 0;
+            width:fit-content;
+            margin: 0 auto;
+        }
+
+        .quick-links li::before {
+            content: '►';
+            color: var(--accent-blue);
+            font-weight: bold;
+            font-size: 1em;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%); 
+        }
+        .scroll-to-top-button.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* --- 5. Media Queries (Desktop/Tablet) --- */
+        @media (min-width: 1200px) {
+            /* Header/Nav Layout */
+            header { flex-direction: row; justify-content: space-between; padding: 5px 40px; }
+            .navbar { justify-content: flex-start; padding: 10px 40px; }
+            .menu-toggle { display: none; }
+            .nav-menu { position: static; height: auto !important; background-color: transparent; }
+            .nav-menu ul { flex-direction: row; gap: 30px; padding: 0; }
+            .nav-menu a { font-size: 1em; }
+            nav a.active::before, nav a.active::after { 
+                display: block; position: absolute; width: 100%; left: 0; opacity: 1; background-color: #ff0080; 
+            }
+            nav a.active::before { top: 0; }
+            nav a.active::after { bottom: 0; }
+
+            /* Footer Layout */
+            .footer-content {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+                justify-content: space-between;
+                padding: 0 40px 60px 40px;
+            }
+            .footer-logo-section { flex-basis: 30%; }
+            .quick-links { flex-basis: 20%; }
+            .get-in-touch { flex-basis: 35%; }
+        }
+
+  
