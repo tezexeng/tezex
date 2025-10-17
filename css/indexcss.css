@@ -1,1 +1,707 @@
+    /* --- Color Palette --- */
+    /* Primary Teal: #00BCD4 */
+    /* Accent Orange: #FF9800 */
+    /* Dark Navy Blue: #1A237E */
+    /* Light Background: #F9F9F9 */
+    /* Text Color: #333333 */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    :root {
+        /* Block Colors */
+        --block-blue: #1A237E;
+        --block-green: #006400;
+        --block-black: #000000;
+        --text-light: #ffffff;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        color: #333333;
+        background-color: #F9F9F9;
+        line-height: 1.6;
+    }
+
+    /* --- Global Sections --- */
+    .content-section {
+        padding: 50px 5%;
+        background-color: #fff;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #1A237E; /* Dark Navy */
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: #FF9800; /* Accent Orange */
+        border-radius: 2px;
+    }
+    
+    /* --- Header & Navigation --- */
+    #main-header {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        background-color: #fff;
+        /* Reinstated/Confirmed sticky positioning for header structure */
+        position: sticky; 
+        top: 0;
+        z-index: 1000;
+        position: relative; /* Essential for positioning the mobile menu using top: 100% */
+    }
+
+ /* Top Bar (Contact Info) */
+    .top-bar {
+        background-color: #1A237E;
+        color: #fff;
+        padding: 8px 5%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+    }
+    .top-bar .contact-info span, .top-bar .location-info {
+        margin-right: 20px;
+    }
+    .top-bar a {
+        color: #FF9800;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .top-bar a:hover {
+        color: #fff;
+    }
+    .top-bar i {
+        color: #00BCD4;
+        margin-right: 5px;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        padding: 15px 5%;
+        position: relative; 
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+    }
+
+    .nav-links li a {
+        text-decoration: none;
+        color: #333333;
+        font-weight: 600;
+        padding: 8px 15px;
+        border-radius: 4px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-links li a:hover, .nav-links li a.active {
+        background-color: #FF9800; /* Orange hover effect */
+        color: #fff;
+    }
+
+    /* Logo Styling */
+    .logo-img {
+        width: 150px;
+        /*border: 3px solid #ff9900;*/
+        height: auto;
+        margin: 0;
+        margin-right: 40px;
+    }
+    /* --- Hamburger Menu Icon --- */
+    .menu-toggle {
+        display: none;  
+        font-size: 1.8rem;
+        color: #1A237E; 
+        cursor: pointer;
+        z-index: 1001;
+        padding: 5px;
+    }
+
+#hero-section {
+    height: 70vh;
+    /* Initial background. This will be the grey background you showed. */
+    background-color: #808080; /* Grey from your provided image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden; /* Crucial for controlling the image movement */
+
+    /* Add transition for smooth background change */
+    transition: background-image 0.5s ease-in-out, background-color 0.5s ease-in-out; 
+}
+
+/* Pseudo-element for the dynamic background image */
+#hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    z-index: 1;
+
+    /* Initial state: Hidden or completely transparent */
+    background-image: url('substation.jpg'); /* REPLACE with your substation image path */
+    background-size: cover;
+    background-position: center; /* Adjust as needed */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(0); /* Initial position for the slide effect */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth transition for hover */
+}
+
+/* Hover Effect for the Hero Section */
+#hero-section:hover::before {
+    opacity: 1; /* Make the background image visible */
+    transform: translateY(-10px); /* Slide up slightly on hover */
+}
+
+/* Adjust the overlay when the image is visible, or keep it consistent */
+#hero-section:hover::before {
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly darker overlay on hover if desired */
+}
+
+
+.hero-content {
+    z-index: 10;
+    padding: 20px;
+    position: relative; /* Ensure content stays above the overlay/image */
+}
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4); /* Add text shadow for better readability over busy image */
+}
+.hero-content p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+.highlight {
+    color: #FF9800; /* Orange highlight for service keywords */
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* ------------------------------------
+      2. Main Content Blocks
+      ------------------------------------ */
+    main {
+        flex-grow: 1; 
+        padding: 0;
+    }
+    
+    .about-container {
+        /* Removed padding from here as it's now handled by the .content-section above for consistency */
+        padding: 0 60px 40px; 
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 10px;
+        align-items: stretch;
+        max-width: 1200px; /* Aligns with navbar max-width */
+        margin: 0 auto;
+    }
+
+    .info-block {
+        color: var(--text-light);
+        padding: 30px;
+        border-radius: 12px;
+        width: 45%; 
+        max-width: 600px;
+        line-height: 1.5;
+        font-size: 1.1em;
+        box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease-in-out;
+    }
+    .block-1 { background-color: var(--block-blue); }
+    .block-2 { background-color: var(--block-green); }
+    .block-3 { background-color: var(--block-black); }
+
+    .block-3 {
+        width: 95%; 
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    /* Hover Effect */
+    .info-block:hover {
+        transform: translateY(-5px) scale(1.02); 
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    .info-block::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.1), transparent 70%);
+        opacity: 1; 
+        z-index: 0;
+        transition: background 0.4s ease-in-out;
+    }
+    .info-block:hover::before {
+        background: radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.2), transparent 70%);
+    }
+    .info-block * {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* List Block Styling */
+    .list-content ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    .list-content li {
+        font-size: 1em; 
+        padding: 5px 0;
+    }
+    .list-content li::before {
+        content: '•';
+        color: #FF9800;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+    /* --- Mission/Vision Section --- */
+    #mission-vision {
+        background-color: #E0F7FA; /* Lighter Teal Background */
+        padding: 80px 5%;
+        text-align: center;
+    }
+
+    .mv-container {
+        display: flex;
+        justify-content: space-around;
+        gap: 40px;
+        max-width: 1000px;
+        margin: 40px auto 0;
+    }
+
+    .mv-box {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        flex: 1;
+        transition: transform 0.3s;
+    }
+
+    .mv-box:hover {
+        transform: translateY(-5px);
+    }
+
+    .mv-box i {
+        font-size: 3rem;
+        color: #00BCD4; /* Teal Icon */
+        margin-bottom: 15px;
+    }
+
+    .mv-box h3 {
+        color: #1A237E; /* Dark Navy */
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+    }
+
+    /* --- Contact + Map --- */
+    #contact {
+         
+    }
+
+    .contact-map-container {
+        display: flex;
+        flex-direction: row; 
+        gap: 40px;
+    }
+    .contact-details {
+        flex: 2;    
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+    .contact-details h2 {
+        color: #1A237E; 
+        font-size: 24px;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+    .contact-details hr {
+        border: 0;
+        border-top: 1px solid #00BCD4; /* Teal line */
+        margin: 10px 0 20px 0;
+    }
+    .detail-label {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1A237E;
+        margin-bottom: 5px;
+    }
+    .address-text, .mobile-text, .email-text {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+    .mobile-text a, .email-text a {
+        color: #333333;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .mobile-text a:hover, .email-text a:hover {
+        color: #FF9800;
+    }
+
+    .map-embed {
+        flex: 4;
+    }
+    .map-embed iframe {
+        display: block;
+        width: 100%;
+        min-height: 400px;
+        border: 5px solid #00BCD4; /* Teal border around map */
+        border-radius: 8px;
+    }
+
+    /* --- FAQ Section --- */
+    #faq-section {
+        background-color: #fff;
+        padding: 50px 5%;
+    }
+
+    .faq-item {
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-question {
+        background-color: #1A237E; /* Dark Navy */
+        color: #fff;
+        padding: 15px 20px;
+        cursor: pointer;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.3s;
+    }
+
+    .faq-question:hover {
+        background-color: #00BCD4; /* Teal hover */
+    }
+    
+    .faq-question i {
+        font-size: 1.2rem;
+        transition: transform 0.3s;
+    }
+
+    .faq-answer {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        background-color: #f4f4f4;
+    }
+
+    .faq-answer p {
+        padding: 15px 0;
+        margin: 0;
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    .faq-item.active .faq-answer {
+        max-height: 200px; /* Adjust based on content height */
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .faq-item.active .faq-question i {
+        transform: rotate(180deg);
+    }
+
+    /* --- Footer --- */
+    footer {
+        background-color: #1A237E; /* Dark Navy Blue */
+        color: #fff;
+        padding: 40px 5% 20px;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content h4 {
+        color: #00BCD4; /* Teal heading */
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        position: relative;
+        padding-left: 15px;
+    }
+    .footer-content h4::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 100%;
+        background-color: #FF9800; /* Orange bar next to heading */
+    }
+
+    .footer-content p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 5px;
+    }
+
+    .footer-logo-col p {
+        margin-top: 10px;
+        font-size: 0.8rem;
+        color: #00BCD4;
+    }
+    .footer-logo-section img {
+        max-width: 150px;
+        height: auto;
+    }
+
+    .footer-links-col ul {
+        list-style: none;
+    }
+    .footer-links-col li {
+        margin-bottom: 8px;
+    }
+    .footer-links-col a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .footer-links-col a:hover {
+        color: #FF9800; /* Orange hover */
+    }
+    .footer-links-col i {
+        color: #FF9800; /* Orange arrow icon */
+        margin-right: 5px;
+    }
+    
+    /* Back-to-Top Button */
+    #back-to-top {
+        display: none;  
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #FF9800;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, transform 0.3s;
+        z-index: 1001;
+    }
+
+    #back-to-top:hover {
+        background-color: #00BCD4;
+        transform: translateY(-2px);
+    }
+
+    /* --- Responsive adjustments --- */
+    @media (max-width: 992px) {
+        
+        /* General */
+        .section-title {
+            font-size: 2rem;
+        }
+
+        /* Logo/Toggle Alignment - START */
+        .logo-img {
+            width: 100px;
+            margin: 0; 
+            border-width: 2px;
+        }
+
+        /* Hamburger visibility */
+        .menu-toggle {
+           display: block;
+           position: absolute; 
+           right: 5%; /* Matches your navbar padding */
+           top: 50%;
+           transform: translateY(-50%); /* Ensures perfect vertical centering */
+           z-index: 1002;
+        }
+
+        /* Navbar layout: Logo (L) and Toggle (R) */
+        .navbar {
+            display: flex;
+            justify-content: space-between; /* MODIFIED: Logo on left, Toggle on right */
+            padding: 10px 5%;
+            flex-direction: row; 
+            align-items: center;
+            position: relative; 
+            margin: 0 auto;
+        }
+        /* Logo/Toggle Alignment - END */
+
+        /* Mobile Nav Menu (Centrally Aligned) */
+        .nav-links {
+            display: none; /* Keep initial hidden state */ 
+            flex-direction: column;
+            position: absolute;
+            top: 100%; /* Position right below the header */
+            left: 0;
+            width: 100%;    
+            background-color: #fff;
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+            border-top: 2px solid #00BCD4;
+            padding: 10px 0;
+            z-index: 999; /* Below the header but above content */
+        }
+
+        /*  This is the critical selector. Ensure it uses `display: flex;` */
+        .nav-links.open {
+            display: flex;  
+        }
+
+        .nav-links li {
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 12px 15px;
+            border-radius: 0;
+        }
+
+          /* Center Top Bar Content */
+        .top-bar {
+            flex-direction: column;
+            align-items: center;
+            text-align: center; 
+        }
+        .top-bar span, .top-bar div {
+            margin: 5px 0;
+            margin-right: 0; 
+        }
+        .top-bar .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Contact and Map Section */
+        .contact-map-container {
+            flex-direction: column;  
+            gap: 20px;
+        }
+
+        .map-embed {
+            height: 300px; /* Mobile default map height */
+        }
+        /* Content Blocks */
+        .about-container {
+            flex-direction: column;
+            padding: 20px 5%; 
+            gap: 20px;
+        }
+        .info-block {
+            width: 100%; 
+            max-width: 100%; 
+            margin: 0; 
+            font-size: 1em;
+        }
+        .block-3 {
+            width: 100%; 
+            max-width: 100%;
+        }
+        
+
+        /* Mission/Vision */
+        .mv-container {
+            flex-direction: column;
+            gap: 20px;
+        }
+        .mv-box {
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        .footer-content {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+        .footer-content h4 {
+            padding-left: 0;
+        }
+        .footer-content h4::before {
+            display: none;
+        }
+        .footer-links-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;      /* centers the whole block in its column */
+       }
+
+       .footer-links-col ul {
+           list-style: none;
+           padding: 0;
+           margin: 0;
+           display: flex;
+           flex-direction: column;   /* vertical list */
+           align-items: flex-start;  /* left-align text inside */
+        }
+
+       .footer-links-col li {
+           display: flex;            /* flex for arrow + text alignment */
+           align-items: center;      /* vertical align arrow + text */
+           margin: 6px 0;
+        }
+
+       .footer-links-col i {
+           margin-right: 10px;
+           color: #FF9800;
+           font-size: 1.2rem;
+        }
+    }
 
