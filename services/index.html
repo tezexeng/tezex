@@ -116,44 +116,7 @@
 
     <button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
-    <script>
-        // Back-to-Top Button Script
-        const backToTopButton = document.getElementById('back-to-top');
-        window.onscroll = function() {scrollFunction()};
 
-        function scrollFunction() {
-          if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-            backToTopButton.style.display = "block";
-          } else {
-            backToTopButton.style.display = "none";
-          }
-        }
-
-        backToTopButton.addEventListener('click', function() {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth' 
-          });
-        });
-        
-        // Hamburger Menu Script
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.getElementById('nav-links');
-
-        menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('open');
-            
-            // Toggle the icon between bars and close (X)
-            const icon = menuToggle.querySelector('i');
-            if (navLinks.classList.contains('open')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times'); 
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    </script>
 
 </body>
 </html>
